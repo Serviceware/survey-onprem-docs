@@ -1,0 +1,1 @@
+﻿SELECT [s].[SurveyTemplateId],[s].[SurveyId],[s].[CreationDate],[s].[LastModified],[s].[ExpirationDate],[s].[SurveyJson],[s].[Type],[s].[Status],[s].[ExternalId], [s].[Recipient],[s].[Account],[s].[TenantId],[s].[FillerId],[s].[RuleId],[s].[DomainId] FROM dbo.srvysurvey AS s ORDER BY [s].[SurveyTemplateId];

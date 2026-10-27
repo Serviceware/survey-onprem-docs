@@ -1,0 +1,12 @@
+SELECT [d].[DomainId],[d].[Name],[d].[Role],[d].[SharedKey],[d].[Default],[d].[TenantId],[d].[Status] FROM dbo.srvydomain AS d;
+SELECT  [dl].[DistributionListId],[dl].[Name],[dl].[Type],[dl].[DistributionListJson],[dl].[TenantId],[dl].[SqlConnectionId],[dl].[DomainId] FROM dbo.srvydistributionlist AS dl;
+SELECT [st].[SurveyTemplateId],[st].[Name],[st].[CreationDate],[st].[LastModified],[st].[ExpirationDate],[st].[SurveyJson],[st].[Type],[st].[Status],[st].[AuthorId],[st].[TenantId],[st].[DomainId] FROM dbo.srvysurveytemplate AS st;
+SELECT [et].[ExamTemplateId],[et].[Name],[et].[CreationDate],[et].[LastModified],[et].[ExpirationDate],[et].[ExamJson],[et].[Type],[et].[Status],[et].[AuthorId],[et].[TenantId], [et].[DomainId] FROM dbo.srvyexamtemplate AS et;
+SELECT [pe].[PendingMailId],[pe].[Recipient],[pe].[Subject],[pe].[Body],[pe].[RetryCount],[pe].[CreatedAt], [pe].[UpdatedAt],[pe].[Error], [pe].[RuleId],[pe].[SettingsId],[pe].[TenantId],[pe].[DomainId] FROM dbo.srvypendingmail AS pe;
+SELECT [pr].[ProcessedMailId],[pr].[Recipient],[pr].[Subject],[pr].[Body],[pr].[RetryCount], [pr].[SentAt], [pr].[ResponseMessage], [pr].[RuleId], [pr].[SettingsId],[pr].[TenantId],[pr].[DomainId] FROM dbo.srvyprocessedmail AS pr;
+SELECT [r].[RuleId],[r].[Name], [r].[Type],[r].[DaysToExpire],[r].[RuleJson], [r].[Status], [r].[TenantId], [r].[SettingsId], [r].[EmailTemplateId],[r].[DistributionListId],[r].[DomainId] FROM dbo.srvyrule AS r;
+SELECT [rc].[Wildcard], [rc].[RuleCounterValue], [rc].[TenantId], [rc].[RuleId], [rc].[RuleCounterId], [rc].[DomainId] FROM dbo.srvyrulecounter AS rc; 
+SELECT [rh].[RuleHistoryId], [rh].[ExecutionDate], [rh].[SuccessfulCount], [rh].[TotalCount], [rh].[RuleId], [rh].[TenantId], [rh].[FailGenerated], [rh].[FailureMessage], [rh].[DomainId] FROM dbo.srvyrulehistory AS rh; 
+SELECT [s].[Name], [s].[SettingsId], [s].[SettingsJson], [s].[Type], [s].[TenantId], [s].[DomainId], [s].[CrossDomainVisible] FROM dbo.srvysettings AS s; 
+SELECT [u].[UserId], [u].[Username], [u].[Email], [u].[CreationDate], [u].[LastLogin], [u].[TenantId] FROM dbo.srvyuser AS u;
+SELECT [et].[EmailTemplateId], [et].[Name], [et].[EmailTemplateJson], [et].[TenantId], [et].[SettingsId], [et].[DomainId] FROM dbo.srvyemailtemplate AS et;

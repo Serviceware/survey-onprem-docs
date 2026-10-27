@@ -1,0 +1,1 @@
+﻿SELECT [e].[ExamId], [e].[CreationDate], [e].[LastModified], [e].[ExpirationDate], [e].[ExamJson], [e].[Type], [e].[Status], [e].[ExternalId], [e].[Recipient], [e].[Account], [e].[TenantId], [e].[FillerId], [e].[ExamTemplateId], [e].[RuleId], [e].[DomainId] FROM dbo.srvyexam AS e ORDER BY [e].[ExamTemplateId];
