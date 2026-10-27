@@ -8,7 +8,8 @@ Operational documentation for on-premise Serviceware Survey installations
 | Document | What it covers |
 |---|---|
 | [`ON-PREM-HOST-CHANGE.md`](ON-PREM-HOST-CHANGE.md) | Manual runbook for restoring an existing on-premise Survey database onto a new server under a new host name. |
-| [`Survey-OnPrem-Host-Change.docx`](Survey-OnPrem-Host-Change.docx) | The same runbook as a document, for handing to a customer administrator. |
+| [`Survey-OnPrem-Host-Change.docx`](Survey-OnPrem-Host-Change.docx) | Customer-facing host-change guide as a Word document, for handing to a customer administrator. |
+| [`docs/survey-onprem-host-change-customer-guide.md`](docs/survey-onprem-host-change-customer-guide.md) | The same customer-facing guide as Markdown. |
 | [`SurveyExporter/`](SurveyExporter) | .NET console tool that reads surveys, exams and configuration from an on-premise Survey SQL Server database and pushes them to a Survey (SCE) instance via its API. |
 
 ## Host change — the short version
