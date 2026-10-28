@@ -1,0 +1,65 @@
+name: SurveyExporter release
+
+# Every change to SurveyExporter that lands on main produces a new release.
+# Version = latest v* tag with the patch number incremented (v1.0.0 if none).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SurveyExporter/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: survey-exporter-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Compute next version
+        id: version
+        run: |
+          latest=$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -n1)
+          if [ -z "$latest" ]; then
+            next="v1.0.0"
+          else
+            IFS=. read -r major minor patch <<< "${latest#v}"
+            next="v${major}.${minor}.$((patch + 1))"
+          fi
+          echo "tag=$next" >> "$GITHUB_OUTPUT"
+          echo "version=${next#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish
+        run: >
+          dotnet publish SurveyExporter/SurveyExporter/SurveyExporter.csproj
+          -c Release
+          -p:Version=${{ steps.version.outputs.version }}
+          -o publish
+
+      - name: Package
+        run: |
+          cd publish
+          zip -r "../SurveyExporter-${{ steps.version.outputs.tag }}.zip" .
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release create "${{ steps.version.outputs.tag }}"
+          "SurveyExporter-${{ steps.version.outputs.tag }}.zip"
+          --target "${{ github.sha }}"
+          --title "SurveyExporter ${{ steps.version.outputs.tag }}"
+          --generate-notes

@@ -64,6 +64,13 @@ cd SurveyExporter/SurveyExporter
 dotnet run
 ```
 
+## Releases
+
+Every change to `SurveyExporter/` merged into `main` publishes a new
+[GitHub release](https://github.com/Serviceware/survey-onprem-docs/releases)
+(patch bump of the latest `v*` tag, zip with the published tool). All changes to
+this repository go through pull requests.
+
 ## Audience
 
 Customer administrator: DBA + application admin + Keycloak admin.
